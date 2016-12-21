@@ -12,7 +12,8 @@ function Snake(){
   this.been_updated = 0;
   
   this.update = function(){
-    if(loops > speed/(s.total+1)){
+    //if(loops > speed/(s.total+1)){
+    if(loops > speed){
       this.been_update = 0;
       if(this.total === this.tail.length){
         for(var i = 0; i<this.total-1; i++){
@@ -58,21 +59,20 @@ function Snake(){
       if(this.alive < 1){
         
         var score;
-      var cols = floor(width/scl);
-      var rows = floor(height/scl);
-      this.x = (floor(cols)/2)*scl;
-      this.y = (floor(rows)/2)*scl;
-      
-      this.xspeed = 0;
-      this.yspeed = 0;
-      
-      this.total = 0;
-      delete this.tail;
-      this.tail = [];
-      
-      
-      
-      this.alive = 1;
+        var cols = floor(width/scl);
+        var rows = floor(height/scl);
+        this.x = (floor(cols)/2)*scl;
+        this.y = (floor(rows)/2)*scl;
+        
+        this.xspeed = 0;
+        this.yspeed = 0;
+        
+        this.total = 0;
+        delete this.tail;
+        this.tail = [];
+        speed = 20;
+
+        this.alive = 1;
       }
         
       if(this.x == food.x && this.y == food.y){
@@ -85,7 +85,9 @@ function Snake(){
   
   this.eat = function(){
     this.total++;
-    speed--;
+    if(speed > 0){
+      speed--;
+    }
     pickLocation();
   }
   

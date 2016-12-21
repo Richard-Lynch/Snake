@@ -1,7 +1,7 @@
 var s;
 var scl = 10;
 var loops = 99999;
-var speed = 20;
+var speed = 10;
 var food;
 //var table;
 
@@ -9,6 +9,7 @@ function setup() {
   createCanvas(600, 600);
   s  = new Snake();
   pickLocation();
+  frameRate(60);
   
   // table = new p5.Table();
 
@@ -42,7 +43,8 @@ function draw() {
 }
 
 function mousePressed(){
-  s.total++;
+  s.eat()
+  loops = 99999;
 }
 
 function keyPressed(){
